@@ -1,0 +1,27 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+angularui:angular-ui-router
+accounts-password
+accounts-ui
+angularutils:pagination
+tmeasday:publish-counts
+email
+fourseven:scss
+angular:angular-material
+cfs:standard-packages
+cfs:gridfs
+danialfarid:ng-file-upload
+alexk111:ng-img-crop
+netanelgilad:angular-sortable-view
+vitalets:angular-xeditable
+urigo:angular
+planettraining:material-design-icons
+
+
+npm-container
+patrickocoffeyo:mysql
+mquandalle:bower

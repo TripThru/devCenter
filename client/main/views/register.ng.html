@@ -1,0 +1,46 @@
+<md-content class="layout-content">
+  <md-card class="registration-form">
+    <md-card-content>
+      <span flex></span>
+      <md-whiteframe layout="column" flex="50">
+        <md-subheader ng-show="rc.error" class="md-warn">
+          {{ rc.error }}
+        </md-subheader>
+        <form layout="column">
+          <md-input-container>
+            <md-icon md-svg-icon="social:ic_person_outline_24px"></md-icon>
+            <input type="text" ng-model="rc.credentials.firstName" placeholder="first name" aria-label="first-name" ng-required="true" />
+          </md-input-container>
+          <md-input-container>
+            <md-icon md-svg-icon="social:ic_person_outline_24px"></md-icon>
+            <input type="text" ng-model="rc.credentials.lastName" placeholder="last name" aria-label="last-name" ng-required="true" />
+          </md-input-container>
+          <md-input-container>
+            <md-icon md-svg-icon="social:ic_domain_24px"></md-icon>
+            <input type="text" ng-model="rc.credentials.companyName" placeholder="company name" aria-label="company-name" ng-required="true" />
+          </md-input-container>
+          <md-input-container>
+            <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
+            <input type="text" ng-model="rc.credentials.email" placeholder="email" aria-label="email" ng-required="true" />
+          </md-input-container>
+          <md-input-container>
+            <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
+            <input type="password" ng-model="rc.credentials.password" placeholder="password" aria-label="password" ng-required="true" />
+          </md-input-container>
+          <md-input-container>
+            <label>reason</label>
+            <textarea ng-model="rc.credentials.reason" columns="1" md-maxlength="150"></textarea>
+          </md-input-container>
+          <md-button class="md-raised md-accent" ng-click="rc.register()">Register</md-button>
+        </form>
+      </md-whiteframe>
+      <span flex></span>
+    </md-card-content>
+  </md-card>
+  <div ng-if="alert">
+    <br/>
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{alert}}
+    </b>
+  </div>
+</md-content>

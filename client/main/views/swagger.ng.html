@@ -1,0 +1,6 @@
+<div class="layout-content">
+  <div ng-if="swaggerError">
+    {{swaggerError}}
+  </div>
+  <div swagger-ui url="swaggerUrl" api-explorer="true" error-handler="myErrorHandler" api-explorer-transform="myTransform"></div>
+</div>

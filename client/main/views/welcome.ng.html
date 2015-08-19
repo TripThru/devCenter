@@ -1,0 +1,47 @@
+<div class="layout-content">
+<md-card>
+  <md-card-content>
+    <h1>TripThru Developer Center</h1>
+    <p>
+      Welcome to the TripThru developer center.
+      Here you will find comprehensive documentation and tools to help you get started with TripThru's API as soon as possible.
+      If you need any assistance, we are always here to help!
+    </p>
+    <h2>Get started</h2>
+    <md-grid-list
+        md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4"
+        md-row-height-gt-md="1:1" md-row-height="2:2"
+        md-gutter="12px" md-gutter-gt-sm="8px"
+        class="landing">
+    <md-grid-tile class="register" ng-click="goToRegistration()"
+        md-colspan-sm="1" md-rowspan="1" md-colspan="1" >
+        <md-icon class="landing-icon" md-svg-icon="/assets/images/register.svg"></md-icon>
+        <md-grid-tile-footer>
+          <h3><a ng-href="/register">Request API keys</a></h3>
+        </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile class="docs" ng-click="goToDocs()"
+        md-rowspan="1" md-colspan="1" md-colspan-sm="1">
+        <md-icon class="landing-icon" md-svg-icon="/assets/images/docs.svg"></md-icon>
+        <md-grid-tile-footer>
+          <h3><a ng-href="/docs/auth">Read our docs</a></h3>
+        </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile class="demo" ng-click="goToDemo()"
+        md-colspan-sm="1" md-rowspan="1" md-colspan="1" >
+        <md-icon class="landing-icon" md-svg-icon="/assets/images/demo.svg"></md-icon>
+        <md-grid-tile-footer>
+          <h3><a ng-href="/docs/demo">Try it out</a></h3>
+        </md-grid-tile-footer>
+    </md-grid-tile>
+    <md-grid-tile class="support" ng-click="goToSupport()"
+        md-rowspan="1" md-colspan="1" md-colspan-sm="1">
+        <md-icon class="landing-icon" md-svg-icon="/assets/images/support.svg"></md-icon>
+        <md-grid-tile-footer>
+          <h3><a ng-href="/">Support</a></h3>
+        </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+  </md-card-content>
+</md-card>
+</div>

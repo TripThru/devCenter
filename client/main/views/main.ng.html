@@ -1,0 +1,51 @@
+<div ng-controller="MainCtrl" layout="row" flex>
+  <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-sm')"
+            layout="column">
+    <header class="nav-header">
+      <a ng-href="/" class="docs-logo">
+        <img src="/assets/images/logo.png" alt="" />
+        <h1 class="docs-logotype md-heading">Developer Center</h1>
+      </a>
+    </header>
+
+    <md-content flex role="navigation">
+      <ul class="docs-menu">
+        <li ng-repeat="section in menu.sections" class="parent-list-item {{section.className || ''}}" ng-class="{'parentActive' : isSectionSelected(section)}">
+          <h2 class="menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name }}">
+            {{section.name}}
+          </h2>
+          <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+          <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+        </li>
+      </ul>
+    </md-content>
+  </md-sidenav>
+  <div layout="column" tabIndex="-1" role="main" flex>
+    <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar">
+      <div class="md-toolbar-tools docs-toolbar-tools" ng-click="openMenu()" tabIndex="-1">
+        <md-button class="md-icon-button" hide-gt-sm aria-label="Toggle Menu">
+          <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
+        </md-button>
+        <div layout="row" flex class="fill-height">
+          <h2 class="md-toolbar-item md-breadcrumb md-headline">
+            <span ng-if="menu.currentPage.name !== menu.currentSection.name">
+              <span hide-sm hide-md>{{menu.currentSection.name}}</span>
+                <span class="docs-menu-separator-icon" hide-sm hide-md style="transform: translate3d(0, 1px, 0)">
+                  <span class="md-visually-hidden">-</span>
+                  <md-icon
+                      aria-hidden="true"
+                      md-svg-icon="navigation:ic_chevron_right_24px"
+                      style="transform:translateY(-2px)"></md-icon>
+                </span>
+              </span>
+              <span class="md-breadcrumb-page">{{menu.currentPage.name}}</span>
+            </h2>
+            <span flex></span>
+        </div>
+      </div>
+    </md-toolbar>
+    <md-content ui-view md-scroll-y flex layout-padding></md-content>
+  </div>
+</div>

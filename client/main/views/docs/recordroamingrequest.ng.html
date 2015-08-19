@@ -1,0 +1,106 @@
+<div class="layout-content">
+<md-content>
+
+<h2>Overview</h2>
+
+<div class="docs-overview-table">
+  <table>
+    <thead>
+      <tr>
+        <th>POST /roaming</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Request a ride</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+
+<h3>Request</h3>
+<div class="docs-payload-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>id</td>
+        <td>String</td>
+        <td>Unique identifier for your request</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>String</td>
+        <td>Values: <code>[sedan, suv]</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+
+<h3>Response</h3>
+<div class="docs-payload-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>result</td>
+        <td>string</td>
+        <td>Result message</td>
+      </tr>
+      <tr>
+        <td>result_code</td>
+        <td>int</td>
+        <td>Result code</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+</md-content>
+
+<h3>Example code</h3>
+<md-content class="docs-lang-tabs">
+<md-tabs md-border-bottom="" md-center-tabs="false">
+  <md-tab label="shell">
+    <md-content class="md-padding">
+      <pre><code class="language-javascript" prism>$curl -X POST -d'{"test": "x"}' https://sandbox.tripthru.com/roaming?access_token=81b61ef32f308680af46fac749b1cda2f9cadca09c1e866c9fe841eda555c4dc</code></pre>
+    </md-content>
+  </md-tab>
+  <md-tab label="JavaScript">
+    <md-content class="md-padding">
+      <pre><code class="language-javascript" prism>
+var request = require("request");
+
+request({
+  uri: "https://sandbox.tripthru.com/roaming?access_token?access_token=81b61ef32f308680af46fac749b1cda2f9cadca09c1e866c9fe841eda555c4dc",
+  method: "POST",
+  timeout: 10000,
+  followRedirect: true,
+  maxRedirects: 10,
+  form: {
+    test: "x"
+  }
+}, function(error, response, body) {
+  console.log(body);
+});
+        </code></pre>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</md-content>
+
+</div>

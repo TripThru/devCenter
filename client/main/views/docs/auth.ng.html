@@ -1,0 +1,120 @@
+<div class="layout-content">
+<md-content>
+
+<h2>Overview</h2>
+<p>
+  The chosen authentication method is OAuth2's Client Credentials Grant flow.
+</p>
+<p>
+  After registration you will receive your credentials <code>client_id</code> and <code>client_secret</code>.
+  You'll use them to request an access token to authorize subsequent API calls.
+</p>
+
+<div class="docs-overview-table">
+  <table>
+    <thead>
+      <tr>
+        <th>POST /oauth/token</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Use your <code>client_id</code> and <code>client_secret</code> to request an access token</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+
+<h3>Request</h3>
+<div class="docs-payload-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>grant_type</td>
+        <td>String</td>
+        <td>You must send <code>client_credentials</code> as value</td>
+      </tr>
+      <tr>
+        <td>client_id</td>
+        <td>String</td>
+        <td>Your <code>client_id</code></td>
+      </tr>
+      <tr>
+        <td>client_secret</td>
+        <td>String</td>
+        <td>Your <code>client_secret</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+
+<h3>Response</h3>
+<div class="docs-payload-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>access_token</td>
+        <td>string</td>
+        <td>Your new access token</td>
+      </tr>
+      <tr>
+        <td>expires_in</td>
+        <td>int</td>
+        <td>Duration of token validity</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>
+</md-content>
+
+<h3>Example code</h3>
+<md-content class="docs-lang-tabs">
+<md-tabs md-border-bottom="" md-center-tabs="false">
+  <md-tab label="shell">
+    <md-content class="md-padding">
+      <pre><code class="language-javascript" prism>$curl -d 'grant_type=client_credentials' -d 'client_id=x' -d 'client_secret=x' -X POST https://sandbox.tripthru.com/oauth/token</code></pre>
+    </md-content>
+  </md-tab>
+  <md-tab label="JavaScript">
+    <md-content class="md-padding">
+      <pre><code class="language-javascript" prism>
+var request = require("request");
+
+request({
+  uri: "https://sandbox.tripthru.com/oauth/token",
+  method: "POST",
+  timeout: 10000,
+  followRedirect: true,
+  maxRedirects: 10,
+  form: {
+    grant_type: "client_credentials",
+    client_id: "x",
+    client_secret: "x"
+  }
+}, function(error, response, body) {
+  console.log(body);
+});
+        </code></pre>
+      </md-content>
+    </md-tab>
+  </md-tabs>
+</md-content>
+
+</div>

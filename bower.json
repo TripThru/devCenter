@@ -1,0 +1,16 @@
+{
+  "name": "devCenter",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-swagger-ui": "~0.1.6"
+  },
+  "private": true,
+   "overrides": {
+    "angular": {
+      "main": []
+    },
+    "bootstrap": {
+      "main": []
+    }
+  }
+}

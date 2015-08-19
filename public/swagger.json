@@ -1,0 +1,194 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "TripThru API v2"
+    },
+    "host": "localhost:10010",
+    "basePath": "/",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "tags": [
+        {
+            "name": "oauth",
+            "description": "OAuth operations",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://swagger.io"
+            }
+        },
+        {
+            "name": "roaming",
+            "description": "Roaming operations",
+            "externalDocs": {
+                "description": "Find out more",
+                "url": "http://swagger.io"
+            }
+        }
+    ],
+    "paths": {
+        "/oauth/token": {
+            "post": {
+                "description": "Request access token",
+                "operationId": "oauth",
+                "tags": [
+                    "oauth"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "description": "Client id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "query",
+                        "description": "Client secret",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "grant_type",
+                        "in": "query",
+                        "description": "client_credentials",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response",
+                        "schema": {
+                            "$ref": "#/definitions/OauthTokenResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/roaming": {
+            "post": {
+                "description": "Record a roaming request",
+                "operationId": "roaming",
+                "tags": [
+                    "roaming"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Roaming request unique identifier",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth 2.0 access token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/RoamingPOSTRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response",
+                        "schema": {
+                            "$ref": "#/definitions/RoamingPOSTResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "OauthTokenResponse": {
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "description": "Access token to authorize other requests"
+                },
+                "expires": {
+                    "type": "integer",
+                    "description": "Duration of the access_token validity"
+                }
+            }
+        },
+        "RoamingPOSTRequest": {
+            "properties": {
+                "pickup_time": {
+                    "type": "string",
+                    "description": "Time to be picked up"
+                },
+                "pickup_location": {
+                    "type": "object",
+                    "description": "Coordinates object for pickup location",
+                    "properties": {
+                        "lat": {
+                            "type": "number",
+                            "description": "latitude of location"
+                        },
+                        "lng": {
+                            "type": "number",
+                            "description": "longitude of location"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "reference or instructions"
+                        }
+                    }
+                },
+                "dropoff_location": {
+                    "type": "object",
+                    "description": "Coordinates object for dropoff location",
+                    "properties": {
+                        "lat": {
+                            "type": "number",
+                            "description": "latitude of dropoff location"
+                        },
+                        "lng": {
+                            "type": "number",
+                            "description": "longitude of dropoff location"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "reference or instructions"
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Request type [sedan, suv]"
+                }
+            }
+        },
+        "RoamingPOSTResponse": {
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "description": "Result message"
+                },
+                "result_code": {
+                    "type": "integer",
+                    "description": "Result numeric code"
+                }
+            }
+        }
+    }
+}
